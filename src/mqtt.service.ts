@@ -5,7 +5,7 @@ import { config } from 'dotenv';
 config();
 @Injectable()
 export class MqttService {
-  private client: mqtt.MqttClient;
+  public client: mqtt.MqttClient;
   private timestamp = moment()
     .tz('Asia/Jakarta')
     .format('YYYY-MM-DD HH:mm:ss.SSS');
@@ -20,7 +20,7 @@ export class MqttService {
       console.log('Connected to MQTT Server');
       // subscribe datapoint/# dan event/#
       this.client.subscribe('datapoint/#');
-      this.client.subscribe('event/#');
+      // this.client.subscribe('event/#');
     });
 
     // handle message
